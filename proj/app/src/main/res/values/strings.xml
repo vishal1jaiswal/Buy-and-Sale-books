@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fuzzy</string>
+    <string name="dialog_select_photo">SelectPhotoDialog</string>
+</resources>

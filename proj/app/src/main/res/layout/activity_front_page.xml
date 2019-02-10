@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vishaljai.fuzzy.FrontPage">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ba12dc">
+    <Button
+        android:layout_width="170dp"
+        android:layout_height="140dp"
+        android:text="Buy"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="100dp"
+        android:background="#ecc410"
+        android:textColor="#e20d0d"
+        android:textSize="50dp"
+        android:onClick="buy"/>
+
+</LinearLayout>
+
+    <Button
+        android:textColor="#e20d0d"
+        android:layout_width="170dp"
+        android:layout_height="140dp"
+        android:text="Sell"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="100dp"
+        android:background="#ecc410"
+        android:textSize="50dp"
+        android:onClick="sale"/>
+
+
+</RelativeLayout>

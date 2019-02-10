@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "469944440126",
+    "firebase_url": "https://fuzzy-743ea.firebaseio.com",
+    "project_id": "fuzzy-743ea",
+    "storage_bucket": "fuzzy-743ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469944440126:android:8acf84b803d61c16",
+        "android_client_info": {
+          "package_name": "vishaljai.fuzzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469944440126-73en85q0min2u5nmqk1g8710dev0btpd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vishaljai.fuzzy",
+            "certificate_hash": "badde71b6cab068c907f0be8fe6edc1e75691213"
+          }
+        },
+        {
+          "client_id": "469944440126-7bvsv1fvbc2nca54ihp8cv4mqrpru7a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyyQwPCeQAYhzzZoNoo_QVNOzUmKCchDQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469944440126-7bvsv1fvbc2nca54ihp8cv4mqrpru7a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

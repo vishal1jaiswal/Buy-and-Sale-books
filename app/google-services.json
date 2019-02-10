@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1000535995023",
+    "firebase_url": "https://fuzzy-d8ccd.firebaseio.com",
+    "project_id": "fuzzy-d8ccd",
+    "storage_bucket": "fuzzy-d8ccd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000535995023:android:8acf84b803d61c16",
+        "android_client_info": {
+          "package_name": "vishaljai.fuzzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000535995023-r1bh8tprn65a5me0g5fk90fhplvcb3t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUp60kkiIgkoeK9pP6FHTOsiZgHIkyyuA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
