@@ -1,31 +1,41 @@
 package vishaljai.fuzzy;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.test.AndroidTestRunner;
-import android.util.AndroidException;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import java.lang.String;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import vishaljai.fuzzy.Model.User;
 
 public class FrontPage extends AppCompatActivity {
     private static final String TAG = "FrontPage";
     private static final int REQUEST_CODE = 1;
 
-FirebaseAuth firebaseAuth;
+    CircleImageView profile_image;
+    TextView email;
+    FirebaseUser firebaseUser;
+    DatabaseReference reference;
+    FirebaseAuth firebaseAuth;
 
     @Override
     public void onBackPressed() {
@@ -37,9 +47,51 @@ FirebaseAuth firebaseAuth;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_front_page);
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         verifyPermissions();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        profile_image = findViewById(R.id.profile_image);
+        email = findViewById(R.id.id_email);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        try {
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            System.out.println("reference::"+reference);
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User user = dataSnapshot.getValue(User.class);
+                    if(user.getEmailId().length()>0) {
+                        email.setText(user.getEmailId());
+                        if (user.getImageUrl().equals("default")) {
+                            profile_image.setImageResource(R.mipmap.ic_launcher);
+                        } else {
+                            Glide.with(FrontPage.this).load(user.getImageUrl()).into(profile_image);
+
+                        }
+                    }
+                    else
+                    {
+                        email.setText("");
+                        profile_image.setImageResource(R.mipmap.ic_launcher);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
