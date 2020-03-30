@@ -5,20 +5,21 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,6 +42,7 @@ public class Sale extends AppCompatActivity {
 
     DatabaseReference databaseBook;
     private StorageReference mStorageRef;
+    FirebaseAuth firebaseAuth;
 
 
     public static final String FB_storage_PATH="image/";
@@ -72,7 +74,8 @@ public class Sale extends AppCompatActivity {
     public void addbook()
     {
 
-
+        firebaseAuth=FirebaseAuth.getInstance();
+        final FirebaseUser user=firebaseAuth.getCurrentUser();
         StorageReference ref=mStorageRef.child(FB_storage_PATH + System.currentTimeMillis()+"."+getImageExt(imgUri));
         final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.setTitle("Uploading Data");
@@ -80,6 +83,8 @@ public class Sale extends AppCompatActivity {
         ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                String userId=user.getUid().trim().toString();
                 String namebook=edit_namebook.getText().toString();
                 String publication=edit_publication.getText().toString();
                 String year=edit_year.getText().toString();
@@ -91,7 +96,7 @@ public class Sale extends AppCompatActivity {
                 {
 
                     String id= databaseBook.push().getKey();
-                    Books books=new Books(id,namebook,publication,year,address,imagename,taskSnapshot.getDownloadUrl().toString());
+                    Books books=new Books(id,namebook,publication,year,address,imagename,taskSnapshot.getDownloadUrl().toString(),userId);
                     databaseBook.child(id).setValue(books);
                    Toast.makeText(getApplicationContext(),"data uploaded",Toast.LENGTH_SHORT).show();
 

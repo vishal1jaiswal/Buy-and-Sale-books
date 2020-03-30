@@ -59,6 +59,7 @@ public class FrontPage extends AppCompatActivity {
 
         try {
             reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            //reference.child(firebaseUser.getEmail());
             System.out.println("reference::"+reference);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
