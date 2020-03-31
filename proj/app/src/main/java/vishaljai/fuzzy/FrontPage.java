@@ -156,6 +156,15 @@ public class FrontPage extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         verifyPermissions();
     }
+
+
+
+   /* public void btnChat(View view) {
+        Toast.makeText(FrontPage.this,"button chat",Toast.LENGTH_SHORT).show();
+    }*/
+
+
+
 }
 
 

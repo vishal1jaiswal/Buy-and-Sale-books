@@ -6,15 +6,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:descendantFocusability="blocksDescendants"
+
         >
 
         <ImageView
             android:id="@+id/timage"
             android:layout_width="207dp"
             android:layout_height="166dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:id="@+id/tname"
             android:layout_marginTop="20dp"
@@ -22,35 +25,41 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/tpublish"
+
+
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/tyear"
+
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/taddress"
 
+
             />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/temailId"
 
+
             />
+
 
     </LinearLayout>
 

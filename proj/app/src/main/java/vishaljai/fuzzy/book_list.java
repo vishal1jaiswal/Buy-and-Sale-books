@@ -51,24 +51,25 @@ public class book_list extends ArrayAdapter<Books> {
 
 
         try {
-            reference = FirebaseDatabase.getInstance().getReference("Users").child(books.getUserId());
-            //reference.child(firebaseUser.getEmail());
-            System.out.println("reference::"+reference);
-            reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
+            if (books.getUserId()!=null) {  //null pointer exception
+                reference = FirebaseDatabase.getInstance().getReference("Users").child(books.getUserId());
+                //reference.child(firebaseUser.getEmail());
+                System.out.println("reference::" + reference);
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
 
-                        String emailId=user.getEmailId();
+                        String emailId = user.getEmailId();
                         textEmail.setText(emailId);
-                }
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-
+                    }
+                });
+            }
         }
         catch(Exception e)
         {
